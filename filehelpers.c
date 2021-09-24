@@ -15,7 +15,10 @@ void ord_bytecode(char *file_name)
 
 	bytecode_s = fopen(file_name, "r");
 	if (bytecode_s == NULL)
-		err(2, file_name);
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", file_name);
+		exit(EXIT_FAILURE);
+	}
 
 	for (line_num = 1; getline(&line, &len, bytecode_s) != -1; line_num++)
 	{
@@ -98,3 +101,4 @@ void check_opcode_func(char *keyword, char *value, int line_num)
 		exit(EXIT_FAILURE);
 	}
 }
+

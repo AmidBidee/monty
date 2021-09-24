@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.h *.c -o monty
+gcc -Wall -Werror -Wextra -pedantic -std=gnu90 *.h *.c -o monty
