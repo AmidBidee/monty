@@ -57,13 +57,19 @@ void free_nodes(void);
 /* monty functions */
 void _push(stack_t **new_node, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+/*void _nop(stack_t **stack, unsigned int line_number);*/
 
-void pop(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void sub(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
-void pstr(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
 
+/*void pop(stack_t **stack, unsigned int line_number);*/
+/*void add(stack_t **stack, unsigned int line_number);*/
+/*void sub(stack_t **stack, unsigned int line_number);*/
+/*void mul(stack_t **stack, unsigned int line_number);*/
+/*void pstr(stack_t **stack, unsigned int line_number);*/
+/*void rotr(stack_t **stack, unsigned int line_number);*/
+
+void err(int error_code, ...);
+void more_err(int error_code, ...);
 
 #endif
