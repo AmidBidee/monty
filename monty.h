@@ -40,16 +40,30 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *head;
+
+extern stack_t *head; /* declaring head of linked list */
+
 
 /* global variable to hold flag for queue and stack length */
-extern var_t var;
+/*extern var_t var;*/
 
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
+/* file helpers */
+void ord_bytecode(char *file_name);
+int parse_line(char *line, int line_num);
+void check_opcode_func(char *keyword, char *value, int line_num);
+stack_t *create_element(char *val, int line_num);
+void free_nodes(void);
+
+/* monty functions */
+void _push(stack_t **new_node, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+
 void pop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+
+
+#endif
