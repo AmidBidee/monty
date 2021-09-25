@@ -9,7 +9,7 @@
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *pop = *stack;
+	stack_t *pop1 = *stack;
 
 	if (var.stack_len == 0)
 	{
@@ -23,6 +23,6 @@ void pop(stack_t **stack, unsigned int line_number)
 		*stack = (*stack)->next;
 	else
 		*stack = NULL;
-	free(pop);
+	free(pop1);
 	var.stack_len--;
 }
