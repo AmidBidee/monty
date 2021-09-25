@@ -38,15 +38,17 @@ stack_t *create_element(char *val, int line_num)
 	}
 	for (i = 0; val[i] != '\0'; i++)
 	{
-		if (isdigit(val[i]) == 0)
+		if (i != 0 && val[i] != '-')
 		{
-			fprintf(stderr, "L%i: usage: push integer\n", line_num);
-			exit(EXIT_FAILURE);
+			if (isdigit(val[i]) == 0)
+			{
+				fprintf(stderr, "L%i: usage: push integer\n", line_num);
+				exit(EXIT_FAILURE);
+			}
 		}
 	}
 
 	value = atoi(val);
-
 	if (node == NULL)
 	{
 		printf("can't malloc");
