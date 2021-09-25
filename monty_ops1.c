@@ -83,3 +83,35 @@ void _pint(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->n);
 }
 
+void _swap(stack_t **stack, unsigned int line_number)
+{
+	int l;
+	stack_t *first, *second, *tmp;
+	first = (*stack);
+	second = (*stack)->next;	
+
+	l = list_len(*stack);
+	if (l < 2)
+	{
+		fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (l > 2)
+	{
+		tmp = second->next;
+		first->next = tmp;
+		second->next = first;
+		first->prev = second;
+		second->prev = NULL;
+		*stack = second;
+	}
+	else
+	{
+		tmp = second;
+	       	tmp->next = first;
+		tmp->prev = NULL;
+		*first = *second;
+		first->prev = tmp;
+		*stack = tmp;
+	}
+}

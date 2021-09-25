@@ -43,7 +43,6 @@ typedef struct instruction_s
 
 extern stack_t *head; /* declaring head of linked list */
 
-
 /* global variable to hold flag for queue and stack length */
 /*extern var_t var;*/
 
@@ -60,17 +59,9 @@ void _pall(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 /*void _nop(stack_t **stack, unsigned int line_number);*/
+void _swap(stack_t **stack, unsigned int line_nunber);
 
-
-/*void pop(stack_t **stack, unsigned int line_number);*/
-/*void add(stack_t **stack, unsigned int line_number);*/
-/*void sub(stack_t **stack, unsigned int line_number);*/
-/*void mul(stack_t **stack, unsigned int line_number);*/
-/*void pstr(stack_t **stack, unsigned int line_number);*/
-/*void rotr(stack_t **stack, unsigned int line_number);*/
-
-void err(int error_code, ...);
-void more_err(int error_code, ...);
+/* more functions */
+size_t list_len(stack_t *h);
 
 #endif
-
