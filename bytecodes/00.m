@@ -1,5 +1,5 @@
 push 1
 push 2
-push w 
+push -1024 + push 123a
 pall
 

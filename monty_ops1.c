@@ -77,7 +77,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%i: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
