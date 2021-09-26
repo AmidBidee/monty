@@ -87,6 +87,11 @@ void check_opcode_func(char *keyword, char *value, int line_num)
 		{
 			if (strcmp(keyword, "push") == 0)
 			{
+				if (strcmp(value, "+") == 0)
+				{
+					fprintf(stderr, "L%i: usage: push integer\n", line_num);
+					exit(EXIT_FAILURE);
+				}
 				elem = create_element(value, line_num);
 				opcodes_func[i].f(&elem, line_num);
 			}
