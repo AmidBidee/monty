@@ -1,1 +1,1 @@
-push + c
+push + swap + nop
