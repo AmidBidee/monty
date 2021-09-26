@@ -1,1 +1,1 @@
-push + nop + pall
+push + c

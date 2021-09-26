@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
  */
 stack_t *create_element(char *val, int line_num)
 {
-	int i, value;
+	int i = 0, value, neg = 1;
 	stack_t *node = malloc(sizeof(stack_t));
 
 	if (val == NULL)
@@ -36,19 +36,22 @@ stack_t *create_element(char *val, int line_num)
 		fprintf(stderr, "L%i: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
-	for (i = 0; val[i] != '\0'; i++)
+	if (val[0] == '-')
 	{
-		if (i != 0 && val[i] != '-')
+		i = 1;
+		neg = -1;
+	}
+	for (; val[i] != '\0'; i++)
+	{
+		if (isdigit(val[i]) == 0)
 		{
-			if (isdigit(val[i]) == 0)
-			{
-				fprintf(stderr, "L%i: usage: push integer\n", line_num);
-				exit(EXIT_FAILURE);
-			}
+			fprintf(stderr, "L%i: usage: push integer\n", line_num);
+			exit(EXIT_FAILURE);
 		}
 	}
 
-	value = atoi(val);
+	value = atoi(val) * neg;
+	printf("%i\n", value);
 	if (node == NULL)
 	{
 		printf("can't malloc");

@@ -40,7 +40,7 @@ void ord_bytecode(char *file_name)
 int parse_line(char *line, int line_num)
 {
 	int format = 0;
-	char *delim = "\n ";
+	const char *delim = "\n ";
 	char *keyword, *value;
 
 	if (line == NULL)
@@ -73,7 +73,7 @@ void check_opcode_func(char *keyword, char *value, int line_num)
 	instruction_t opcodes_func[] = {
 		{"push", &_push},
 		{"pall", &_pall},
-		{"pint",&_pint},
+		{"pint", &_pint},
 		{"pop", &_pop},
 		{"swap", &_swap},
 		{"nop", &_nop},
