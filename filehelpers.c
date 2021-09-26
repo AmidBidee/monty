@@ -90,13 +90,7 @@ void check_opcode_func(char *keyword, char *value, int line_num)
 				opcodes_func[i].f(&elem, line_num);
 			}
 			else
-				if (value)
-				{
-					fprintf(stderr, "L%i: unknown instruction %s\n", line_num, value);
-					exit(EXIT_FAILURE);
-				}
-				else
-					opcodes_func[i].f(&head, line_num);
+				opcodes_func[i].f(&head, line_num);
 			stat_code = 0;
 		}
 		i++;
