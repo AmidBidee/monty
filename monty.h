@@ -1,4 +1,3 @@
-
 #ifndef MONTY_H
 #define MONTY_H
 
@@ -9,7 +8,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdarg.h>
-
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -26,6 +24,7 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -40,29 +39,41 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern stack_t *head;
+typedef void (*op_func)(stack_t **, unsigned int);
 
-extern stack_t *head; /* declaring head of linked list */
+/*file operations*/
+void open_file(char *file_name);
+int parse_line(char *buffer, int line_number, int format);
+void read_file(FILE *);
+int len_chars(FILE *);
+void find_func(char *, char *, int, int);
 
-/* global variable to hold flag for queue and stack length */
-/*extern var_t var;*/
+void call_fun(op_func, char *, char *, int, int);
 
-/* file helpers */
-void ord_bytecode(char *file_name);
-int parse_line(char *line, int line_num);
-void check_opcode_func(char *keyword, char *value, int line_num);
-stack_t *create_element(char *val, int line_num);
+/*Stack operations*/
+stack_t *create_node(int n);
 void free_nodes(void);
+void _pall(stack_t **, unsigned int);
+void _push(stack_t **, unsigned int);
+void add_to_queue(stack_t **, unsigned int);
+void _pint(stack_t **, unsigned int);
+void _pop(stack_t **, unsigned int);
+void _nop(stack_t **, unsigned int);
+void _swap(stack_t **, unsigned int);
+void _add(stack_t **, unsigned int);
+void _sub(stack_t **, unsigned int);
+void _div(stack_t **, unsigned int);
+void _mul(stack_t **, unsigned int);
+void _mod(stack_t **, unsigned int);
+void print_char(stack_t **, unsigned int);
+void print_str(stack_t **, unsigned int);
+void _rotl(stack_t **, unsigned int);
 
-/* monty functions */
-void _push(stack_t **new_node, unsigned int line_number);
-void _pall(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **stack, unsigned int line_number);
-void _pint(stack_t **stack, unsigned int line_number);
-void _nop(stack_t **stack, unsigned int line_number);
-void _swap(stack_t **stack, unsigned int line_nunber);
-void _add(stack_t **stack, unsigned int line_nunber);
-
-/* more functions */
-size_t list_len(stack_t *h);
+/*Error hanlding*/
+void err(int error_code, ...);
+void more_err(int error_code, ...);
+void string_err(int error_code, ...);
+void _rotr(stack_t **, unsigned int);
 
 #endif

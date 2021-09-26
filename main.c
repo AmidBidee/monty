@@ -3,9 +3,9 @@ stack_t *head = NULL;
 
 /**
  * main - entry point
- * @argc: argument count
- * @argv: arguments array
- * Return: Always 0
+ * @argc: arguments count
+ * @argv: list of arguments
+ * Return: always 0
  */
 
 int main(int argc, char *argv[])
@@ -15,50 +15,26 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	ord_bytecode(argv[1]);
+	open_file(argv[1]);
 	free_nodes();
 	return (0);
 }
 
 /**
- * create_element - creates a node element
- * @val: character value
- * @line_num: line_number
- * Return: the node element just created
+ * create_node - Creates a node.
+ * @n: Number to go inside the node.
+ * Return: Upon sucess a pointer to the node. Otherwise NULL.
  */
-stack_t *create_element(char *val, int line_num)
+stack_t *create_node(int n)
 {
-	int i, value, flag = 1;
-	stack_t *node = malloc(sizeof(stack_t));
+	stack_t *node;
 
-	if (val != NULL && val[0] == '-')
-	{
-		val = val + 1;
-		flag = -1;
-	}
-	if (val == NULL)
-	{
-		fprintf(stderr, "L%i: usage: push integer\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-	for (i = 0; val[i] != '\0'; i++)
-	{
-		if (isdigit(val[i]) == 0)
-		{
-			fprintf(stderr, "L%i: usage: push integer\n", line_num);
-			exit(EXIT_FAILURE);
-		}
-	}
-	value = atoi(val) * flag;
+	node = malloc(sizeof(stack_t));
 	if (node == NULL)
-	{
-		printf("can't malloc");
-		exit(EXIT_FAILURE);
-	}
-	node->prev = NULL;
+		err(4);
 	node->next = NULL;
-	node->n = value;
-
+	node->prev = NULL;
+	node->n = n;
 	return (node);
 }
 
@@ -80,3 +56,28 @@ void free_nodes(void)
 	}
 }
 
+
+/**
+ * add_to_queue - Adds a node to the queue.
+ * @new_node: Pointer to the new node.
+ * @ln: line number of the opcode.
+ */
+void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
+{
+	stack_t *tmp;
+
+	if (new_node == NULL || *new_node == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *new_node;
+		return;
+	}
+	tmp = head;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+
+	tmp->next = *new_node;
+	(*new_node)->prev = tmp;
+
+}

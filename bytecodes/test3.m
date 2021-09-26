@@ -1,1 +1,1 @@
-push + pint + pop + swap + pall
+push + pall + swap + pint
