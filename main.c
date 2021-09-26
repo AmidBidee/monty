@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
  */
 stack_t *create_element(char *val, int line_num)
 {
-	int i = 0, value, neg = 1;
+	int i, value, neg = 1;
 	stack_t *node = malloc(sizeof(stack_t));
 
 	if (val == NULL)
@@ -38,10 +38,10 @@ stack_t *create_element(char *val, int line_num)
 	}
 	if (val[0] == '-')
 	{
-		i = 1;
+		val = val + 1;
 		neg = -1;
 	}
-	for (; val[i] != '\0'; i++)
+	for (i = 0; val[i] != '\0'; i++)
 	{
 		if (isdigit(val[i]) == 0)
 		{
