@@ -60,6 +60,7 @@ void _pop(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_nunber);
+void _add(stack_t **stack, unsigned int line_nunber);
 
 /* more functions */
 size_t list_len(stack_t *h);

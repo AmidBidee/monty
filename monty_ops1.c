@@ -90,41 +90,22 @@ void _pint(stack_t **stack, unsigned int line_number)
  */
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	int l;
-	stack_t *first, *second, *tmp;
+	stack_t *tmp;
 
-	l = list_len(*stack);
-	if (l < 2 || stack == NULL || *stack == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	first = (*stack);
-	second = (*stack)->next;
-	if (l == 2)
+	tmp = (*stack)->next;
+	(*stack)->next = tmp->next;
+	if (tmp->next != NULL)
 	{
-		tmp = second;
-		second = first;
-		first = tmp;
-		return;
+		fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
 	}
-
-	tmp = second->next;
-	first->next = tmp;
-	second->next = first;
-	first->prev = second;
-	second->prev = NULL;
-	*stack = second;
-}
-
-void _add()
-{
-
-}
-
-void _nop(stack_t **stack, unsigned int line_number)
-{
-	(void) stack;
-	(void) line_number;
-	return;
+	tmp->next = *stack;
+	(*stack)->prev = tmp;
+	tmp->prev = NULL;
+	*stack = tmp;
 }

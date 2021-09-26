@@ -73,10 +73,11 @@ void check_opcode_func(char *keyword, char *value, int line_num)
 	instruction_t opcodes_func[] = {
 		{"push", &_push},
 		{"pall", &_pall},
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"nop", _nop},
+		{"pint",&_pint},
+		{"pop", &_pop},
+		{"swap", &_swap},
+		{"nop", &_nop},
+		{"add", &_add},
 		{NULL, NULL}
 	};
 
@@ -84,7 +85,7 @@ void check_opcode_func(char *keyword, char *value, int line_num)
 	{
 		if (strcmp(opcodes_func[i].opcode, keyword) == 0)
 		{
-			if (strcmp(opcodes_func[i].opcode, "push") == 0)
+			if (strcmp(keyword, "push") == 0)
 			{
 				elem = create_element(value, line_num);
 				opcodes_func[i].f(&elem, line_num);
