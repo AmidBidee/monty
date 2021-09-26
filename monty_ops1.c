@@ -101,6 +101,13 @@ void _swap(stack_t **stack, unsigned int line_number)
 	}
 	first = (*stack);
 	second = (*stack)->next;
+	if (l == 2)
+	{
+		tmp = second;
+		second = first;
+		first = tmp;
+		return;
+	}
 
 	tmp = second->next;
 	first->next = tmp;
