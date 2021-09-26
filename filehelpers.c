@@ -76,7 +76,7 @@ void check_opcode_func(char *keyword, char *value, int line_num)
 		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
-		/*{"nop", _nop},*/
+		{"nop", _nop},
 		{NULL, NULL}
 	};
 

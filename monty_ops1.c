@@ -116,3 +116,15 @@ void _swap(stack_t **stack, unsigned int line_number)
 	second->prev = NULL;
 	*stack = second;
 }
+
+void _add()
+{
+
+}
+
+void _nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+	return;
+}
