@@ -35,7 +35,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 	if (stack == NULL)
 	{
-		fprintf(stderr, "L%i: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
